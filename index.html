@@ -1,0 +1,2632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- ===== FAVICON ===== -->
+	<link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+	<!-- ===== BOX ICONS ===== -->
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+	<!-- ===== FANCYAPPS CSS ===== -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+
+	<!-- ===== AOS ANIMATE CSS ===== -->
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
+	<!-- ===== MAIN CSS ===== -->
+	<style>
+		/* ===== GOOGLE FONTS ===== */
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+		/* ===== FONT FACE ===== */
+		@font-face {
+		   font-family: 'photograph_signatureregular';
+		   src: url('assets/fonts/photograph_signature-webfont.woff2') format('woff2'),
+				url('assets/fonts/photograph_signature-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+		   font-family: 'barlistaregular';
+		   src: url('assets/fonts/barlista-zvqxb-webfont.woff2') format('woff2'),
+				url('assets/fonts/barlista-zvqxb-webfont.woff') format('woff');
+		   font-weight: normal;
+		   font-style: normal;
+		}
+
+		@font-face{
+			font-family: 'perisharegular';
+			src: url('assets/fonts/perisha.regular-webfont.woff2') format('woff2'),
+				  url('assets/fonts/perisha.regular-webfont.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
+		/* ===== end font face ===== */
+
+		/* ===== VARIABLES CSS ===== */
+		:root{
+			/* ===== Colors ===== */
+			--beige-color: #E5DCC3;
+			--gray-color: #696464;
+			--body-color: #FDFAF6;
+			--text-color: #141414;
+			--white-color: #FFF;
+
+			/* ===== Font & Typography ===== */
+			--text-font: 'Poppins', sans-serif;
+			--title-font: 'photograph_signatureregular';
+			--subtitle-font: 'barlistaregular';
+			--biggest-font-size: 3.2rem;
+			--big-font-size: 2rem;
+			--h1-font-size: 1.4rem;
+			--h2-font-size: 1.25rem;
+			--h3-font-size: 1rem;
+			--normal-font-size: .938rem;
+			--small-font-size: .725rem;
+
+			/* ===== Font Weight ===== */
+			--regular-font: 400;
+			--medium-font: 500;
+			--semi-bold-font: 600;
+
+			/* ===== z-index ===== */
+			--z-toggle: 100;
+			--z-video: 200;
+			--z-menu: 300;
+			--z-popup: 400;
+			--z-password: 500;
+		}
+		/* ===== end variables css ===== */
+
+		/* Responsive Font & Typography */
+		@media screen and (min-width: 768px){
+			:root{
+				--biggest-font-size: 4.5rem;
+				--big-font-size: 2.5rem;
+				--h1-font-size: 2.25rem;
+				--h2-font-size: 1.5rem;
+				--h3-font-size: 1.25rem;
+				--normal-font-size: 1rem;
+				--small-font-size: .825rem;
+			}
+		}
+		/* ===== end responsive font & typography ===== */
+
+		/* ===== BASE ===== */
+		*,
+		::before,
+		::after{
+			box-sizing: border-box;
+		}
+		html{
+			scroll-behavior: smooth;
+		}
+		body{
+			margin: 0;
+			font-family: var(--text-font);
+			font-size: var(--normal-font-size);
+			background-color: var(--body-color);
+			color: var(--text-color);
+			line-height: 1.6;
+			overflow: hidden; /* POP-UP */
+		}
+		h1,h2,h3,h4,p,ul{
+			margin: 0;
+		}
+		ul{
+			padding: 0;
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		img,
+		video{
+			max-width: 100%;
+			height: auto;
+		}
+		button,
+		input,
+		textarea,
+		select{
+			outline: none;
+			border: none;
+			font-family: var(--text-font);
+			font-size: var(--normal-font-size);
+			color: var(--text-color);
+		}
+		label{
+			font-weight: var(--medium-font);
+		}
+		.l-main{
+			overflow-x: hidden;
+		}
+		/* ===== end base ===== */
+
+		/* ===== SCROLL BAR ===== */
+		::-webkit-scrollbar{
+			width: .6rem;
+			background: #E8E8E8;
+		}
+		::-webkit-scrollbar-thumb{
+			background: #686D76;
+			border-radius: .5rem;
+		}
+		/* ===== end scroll bar ===== */
+
+		/* ===== CSS CLASS ===== */
+		.section{
+			padding: 4rem 0 3rem;
+		}
+		.section__title,
+		.rsvp__title,
+		.gift__title{
+			font-family: var(--subtitle-font);
+			font-size: var(--h1-font-size);
+			text-align: center;
+			margin-bottom: 2rem !important;
+		}
+		.section__subtitle,
+		.rsvp__subtitle,
+		.gift__subtitle{
+			display: block;
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+		/* ===== end css class ===== */
+
+		/* ===== LAYOUT ===== */
+		.container{
+			max-width: 1024px;
+			width: calc(100% - 2rem);
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+		.bd-grid{
+			display: -ms-grid;
+			display: grid;
+			grid-gap: 1.5rem;
+		}
+		/* ===== layout ===== */
+
+		/* ===== SOCIAL MEDIA ===== */
+		.social__media{
+			background-color: var(--text-color);
+			max-width: -webkit-max-content;
+			max-width: -moz-max-content;
+			max-width: max-content;
+			width: 100%;
+			padding: 0.5rem 1.5rem;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.social__media-link{
+			display: -ms-grid;
+			display: grid;
+			-ms-grid-columns: (auto)[2];
+				grid-template-columns: repeat(2,auto);
+			-ms-grid-row-align: center;
+				align-items: center;
+			-webkit-column-gap: .5rem;
+			   -moz-column-gap: .5rem;
+					column-gap: .5rem;
+			color: var(--white-color);
+		}
+		.social__icon{
+			font-size: 1.2rem;
+		}
+		.social__link-round{
+			background-color: var(--text-color);
+			color: var(--white-color);
+			padding: 0.5rem;
+			font-size: 1.5rem;
+			border-radius: 50%;
+			display: -webkit-inline-box;
+			display: -ms-inline-flexbox;
+			display: inline-flex;
+		}
+		/* ===== end social media ===== */
+
+		/* ===== BUTTONS ===== */
+		.button{
+			max-width: -webkit-max-content;
+			max-width: -moz-max-content;
+			max-width: max-content;
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: var(--text-color);
+			color: var(--white-color);
+			padding: 0.6rem 1.5rem;
+			border-radius: .5rem;
+			cursor: pointer;
+		}
+		.button--flex{
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			color: var(--white-color);
+		}
+		.button__icon{
+			font-size: 1.5rem;
+			margin-right: .5rem;
+		}
+		.button__link{
+			color: var(--white-color);
+		}
+		/* ===== end buttons ===== */
+
+		/* ===== NAV ===== */
+		.nav__toggle{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-color: var(--text-color);
+			color: var(--white-color);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+			cursor: pointer;
+			position: fixed;
+			left: 1rem;
+			bottom: 1.2rem;
+			z-index: var(--z-toggle);
+		}
+		.menu__icon{
+			font-size: 1.5rem;
+		}
+		.nav__menu{
+			background-color: var(--white-color);
+			padding: 1.5rem 1rem 1.75rem;
+			position: fixed;
+			left: 0;
+			bottom: -100%;
+			width: 100%;
+			border-radius: 1.25rem 1.25rem 0 0;
+			z-index: var(--z-menu);
+			display: -ms-grid;
+			display: grid;
+			-ms-grid-row-align: center;
+				align-items: center;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+		.nav__list{
+			display: -ms-grid;
+			display: grid;
+			-ms-grid-columns: (1fr)[3];
+				grid-template-columns: repeat(3,1fr);
+			grid-row-gap: 1.5rem;
+		}
+		.nav__link{
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+					flex-direction: column;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+						-ms-grid-row-align: center;
+					align-items: center;
+			color: var(--text-color);
+			font-weight: var(--semi-bold-font);
+		}
+		.nav__icon{
+			width: 30px;
+			margin-bottom: .3rem;
+		}
+		.nav__name{
+			font-size: var(--small-font-size);
+		}
+		.nav__close{
+			position: absolute;
+			right: 1rem;
+			bottom: .5rem;
+			font-size: 1.5rem;
+			color: red;
+			cursor: pointer;
+		}
+
+		/* Show Menu */
+		.show-menu{
+			bottom: 0;
+		}
+
+		/* Active Link */
+		.active-link{
+			position: relative;
+			color: var(--gray-color);
+			-webkit-transition: .3s;
+			transition: .3s;
+		}
+		.active-link::before{
+			content: '';
+			position: absolute;
+			bottom: -.3rem;
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			background-color: var(--gray-color);
+			display: none;
+		}
+		/* ===== end nav ===== */
+
+		/* ===== HOME ===== */
+		.home{
+			width: 100%;
+			height: 100vh;
+			overflow: hidden;
+			position: relative;
+			background-color: #000;
+		}
+		.home__container{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: var(--white-color);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+			text-align: center;
+		}
+		.home__subtitle{
+			font-weight: var(--regular-font);
+			margin-bottom: 1rem;
+		}
+		.home__title{
+			font-size: var(--biggest-font-size);
+			font-family: var(--title-font);
+			font-weight: var(--regular-font);
+			margin-bottom: 1rem;
+			line-height: 1;
+		}
+		.home__date{
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			font-size: var(--h2-font-size);
+			font-family: var(--subtitle-font);
+		}
+		.home__date span{
+			padding: 0 1rem;
+		}
+
+		/* Home Slideshow Background */
+		.home__slideshow{
+			width: inherit;
+			height: inherit;
+			position: relative;
+			overflow: hidden;
+		}
+		.home__slideshow::after{
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,.1);
+		}
+		.slideshow__item{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			opacity: 0;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+			-webkit-animation: cycleImages 31s infinite;
+					animation: cycleImages 31s infinite;
+		}
+
+		/* CSS Animations */
+		@-webkit-keyframes cycleImages{
+			25%{
+				opacity: 1;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			}
+			40%{
+				opacity: 0;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+			}
+		}
+		@keyframes cycleImages{
+			25%{
+				opacity: 1;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+			}
+			40%{
+				opacity: 0;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+			}
+		}
+
+		.slideshow__item img{
+			width: 100%;
+			height: 100%;
+			-o-object-fit: cover;
+			   object-fit: cover;
+			-o-object-position: center;
+			   object-position: center;
+			-webkit-animation: zoom 31s infinite;
+					animation: zoom 31s infinite;
+		}
+
+		/* ===== CSS Animations ===== */
+		@-webkit-keyframes zoom{
+			100%{
+				-webkit-transform: scale(1.3);
+						transform: scale(1.3);
+			}
+		}
+		@keyframes zoom{
+			100%{
+				-webkit-transform: scale(1.3);
+						transform: scale(1.3);
+			}
+		}
+
+		.slideshow__item:nth-child(1),
+		.slideshow__item:nth-child(1) img{
+			-webkit-animation-delay: 0s;
+					animation-delay: 0s;
+		}
+		.slideshow__item:nth-child(2),
+		.slideshow__item:nth-child(2) img{
+			-webkit-animation-delay: 10s;
+					animation-delay: 10s;
+		}
+		.slideshow__item:nth-child(3),
+		.slideshow__item:nth-child(3) img{
+			-webkit-animation-delay: 20s;
+					animation-delay: 20s;
+		}
+		/* ===== end home ===== */
+
+		/* ===== LOVE STORY ===== */
+		.story.section{
+			padding: 4rem 0 0rem;
+		}
+		figure{
+			width: 100%;
+			background-color: var(--beige-color);
+			padding: 19px 19px 85px 19px;
+			margin-left: auto;
+			margin-right: auto;
+			-webkit-transform: rotate(-5deg) !important;
+					transform: rotate(-5deg) !important;
+		}
+		.story__title{
+			font-family: var(--subtitle-font);
+			font-size: var(--h1-font-size);
+			margin-bottom: 2rem;
+			text-align: center;
+		}
+		.polaroid__img{
+			width: 100%;
+			-o-object-fit: cover;
+			   object-fit: cover;
+		}
+
+		/* Accordion */
+		.accordion__item{
+			margin-bottom: 1rem;
+		}
+		.accordion__item:last-child{
+			margin-bottom: 0;
+		}
+		.accordion__title{
+			position: relative;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+			cursor: pointer;
+		}
+		.accordion__title::after{
+			content: '\25b6';
+			font-size: 1.3rem;
+			position: absolute;
+			left: 0;
+		}
+		.accordion__title.active-accordion::after{
+			content: '\25bc';
+		}
+		.accordion__title.active-accordion .accordion__title-text{
+			font-weight: var(--semi-bold-font);
+		}
+		.accordion__title-text{
+			font-size: var(--h3-font-size);
+			margin-left: 2rem;
+		}
+		.accordion__description{
+			max-height: 0rem;
+			overflow: hidden;
+			-webkit-transition: max-height .2s ease-out;
+			-webkit-transition: max-height .4s ease-out;
+			transition: max-height .4s ease-out;
+		}
+		.accordion__description-text{
+			margin-left: 2rem;
+			padding-top: .5rem;
+		}
+		/* ===== end love story ===== */
+
+		/* ===== COUPLE ===== */
+		.couple span{
+			display: block;
+		}
+		.couple__img{
+			width: 100%;
+			height: 450px;
+			background: url(assets/img/pic2.jpg) no-repeat center/cover;
+		}
+		.couple__box{
+			background-color: var(--beige-color);
+			text-align: center;
+			padding: 2rem 1rem;
+		}
+		.groom__data{
+			margin-bottom: 2rem;
+		}
+		.couple__title{
+			font-family: var(--subtitle-font);
+			font-size: var(--h1-font-size);
+			margin-bottom: 2rem;
+			text-align: center;
+		}
+		.couple__icon{
+			width: 50px;
+		}
+		.couple__name{
+			font-family: var(--title-font);
+			font-size: 2.2rem;
+		}
+		.couple__line{
+			height: 2px;
+			width: 50px;
+			background-color: var(--text-color);
+			border-radius: .5rem;
+			margin: .5rem auto 1rem;
+		}
+		.couple__subtitle{
+			font-weight: var(--semi-bold-font);
+			margin-bottom: .3rem;
+		}
+		.couple__description{
+			margin-bottom: 1rem;
+		}
+		/* ===== end couple ===== */
+
+		/* ===== EVENT ===== */
+		.event span{
+			display: block;
+		}
+		.event{
+			background: rgba(0,0,0,.5) url(assets/img/event_bg.jpg) no-repeat center/cover;
+			background-blend-mode: overlay; 
+			color: var(--white-color);
+		}
+		.events__box{
+			border: 2px solid var(--white-color);
+			text-align: center;
+			border-radius: .5rem;
+		}
+		.event__title{
+			padding: 1rem 0;
+			border-bottom: .5px solid var(--white-color);
+		}
+		.time{
+			padding: 2rem 1rem;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+					justify-content: space-between;
+		}
+		.event__icon{
+			font-size: 1.5rem;
+		}
+		.event__img-line{
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+		}
+		.event__line{
+			height: 1px;
+			width: 100%;
+			background-color: var(--white-color);
+		}
+		.event__img{
+			padding: 0 .5rem;
+			margin-top: -4rem;
+		}
+		.address{
+			margin: 1.5rem 0 2rem;
+		}
+		.event__button{
+			background-color: transparent;
+			border: 2px solid var(--white-color);
+			margin-bottom: 2rem;
+		}
+		.event__quote{
+			font-family: 'perisharegular';
+			font-size: 3rem;
+			text-align: center;
+			font-weight: var(--regular-font);
+			padding: 1.5rem;
+			line-height: 1;
+			-webkit-transform: rotate(-12deg);
+					transform: rotate(-12deg);
+			letter-spacing: 2px;
+		}
+		/* ===== end event ===== */
+
+		/* ===== COUNTDOWN TIMER ===== */
+		.timer{
+			margin-top: 5rem;
+		}
+		.timer__container{
+			-ms-grid-columns: (minmax(100px,1fr))[auto-fit];
+				grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+		}
+		.timer__number{
+			width: 100px;
+			height: 100px;
+			border-top-left-radius: .5rem;
+			border-bottom-right-radius: .5rem;
+			border-top-right-radius: 2rem;
+			border-bottom-left-radius: 2rem;
+			background-color: var(--white-color);
+			color: var(--text-color);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+			font-size: var(--h1-font-size);
+			font-family: var(--title-font);
+			font-weight: var(--semi-bold-font);
+			margin: 0 auto 1rem;
+		}
+		.timer__description{
+			display: block;
+			text-align: center;
+			font-size: var(--h4-font-size);
+			color: var(--white-color);
+		}
+
+		/* Timer Stop */
+		#timer-stop{
+			text-align: center;
+			margin-top: 1rem;
+		}
+		/* ===== end countdown timer ===== */
+
+		/* ===== GALLERY ===== */
+		.gallery .section__title{
+			margin-bottom: 0 !important;
+			margin-bottom: .5rem;
+		}
+		.gallery__container{
+			-ms-grid-columns: (minmax(300px,1fr))[auto-fit];
+				grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+		}
+		.gallery__box{
+			width: 100%;
+			height: 300px;
+			position: relative;
+			border-radius: .5rem;
+			overflow: hidden;
+		}
+		.gallery__box img{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			-o-object-fit: cover;
+			   object-fit: cover;
+			-o-object-position: center;
+			   object-position: center;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+		.gallery__box:hover img{
+			-webkit-transform: scale(1.1);
+					transform: scale(1.1);
+		}
+		/* ===== end gallery ===== */
+
+		/* ===== VIDEO ==== */
+		.video{
+			padding-bottom: 3rem;
+		}
+		.video__frame{
+			position: relative;
+		}
+		.video__frame{
+			width: 100% !important;
+			height: 300px;
+			background: url(assets/img/pic4.jpg) no-repeat center/cover;
+			position: relative;
+		}
+		.video__play{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%,-50%);
+					transform: translate(-50%,-50%);
+			cursor: pointer;
+		}
+		.video__play-icon{
+			font-size: 5rem;
+			color: var(--white-color);
+		}
+
+		/* Video Content */
+		.video__content{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			background-color: var(--white-color);
+			z-index: var(--z-video);
+			overflow: hidden;
+			display: none;
+		}
+		.video__sample{
+			max-width: 90%;
+			-webkit-animation: video 1s linear;
+				   animation: video 1s linear;
+		}
+
+		/* CSS Animation */
+		@-webkit-keyframes video{
+		   0%{
+			  visibility: hidden;
+			  -webkit-transform: translateY(-300px);
+					transform: translateY(-300px);
+		   }
+		   100%{
+			visibility: visible;
+			-webkit-transform: translateY(0px);
+				  transform: translateY(0px);  
+		   }
+		}
+		@keyframes video{
+		   0%{
+			  visibility: hidden;
+			  -webkit-transform: translateY(-300px);
+					transform: translateY(-300px);
+		   }
+		   100%{
+			visibility: visible;
+			-webkit-transform: translateY(0px);
+				  transform: translateY(0px);  
+		   }
+		}
+
+		.video__close{
+			position: absolute;
+			background-color: #E40017;
+			width: 45px;
+			height: 45px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+			top: 0;
+			right: 0;
+			cursor: pointer;
+		}
+		.video__close-icon{
+			font-size: 1.5rem;
+			color: var(--white-color);
+		}
+
+		/* Show Video */
+		.show-video{
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+		}
+		/* ===== end video ===== */
+
+		/* ===== RSVP ===== */
+		.rsvp-title{
+			margin-bottom: 0 !important;
+		}
+		.rsvp__box-form{
+			background-color: var(--beige-color);
+			padding: 2rem 1.2rem;
+			border-radius: .5rem;
+		}
+		.rsvp__field{
+			margin-bottom: 1rem;
+		}
+		.rsvp__field:last-child{
+			margin-bottom: 0;
+		}
+		.rsvp__input,
+		.rsvp__textarea{
+			display: block;
+			width: 100%;
+			border: 1px solid gray;
+			padding: 0.3rem 0.4rem;
+			border-radius: .3rem;
+		}
+		.rsvp__textarea{
+			height: 125px;
+			resize: none;
+		}
+
+		/* Radio Btn */
+		input[type='radio']::after{
+			position: relative;
+			content: '';
+			display: inline-block;
+			width: 18px;
+			height: 18px;
+			top: -1px;
+			left: -1px;
+			border: 2px solid #d8e4e2;
+			background-color: var(--white-color);
+			border-radius: 50%;
+			box-sizing: border-box;
+			cursor: pointer;
+		}
+		input[type='radio']:checked::after{
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			top: -1px;
+			left: -1px;
+			position: relative;
+			background-color: var(--text-color);
+			content: '';
+			display: inline-block;
+			visibility: visible;
+			border: 2px solid #d8e4e2;
+		}
+		.radio__text{
+			margin-left: .5rem;
+		}
+
+		/* Select Btn */
+		.select__box{
+			position: relative;
+			width: 60px;
+			height: 37px;
+			margin: .5rem 0 .5rem;
+		}
+		.select__box::before{
+			content: '';
+			position: absolute;
+			top: 15px;
+			right: 14px;
+			border: 7px solid;
+			border-color: #D5DBD9 transparent transparent transparent;
+			pointer-events: none;
+		}
+		.select__box select{
+			-webkit-appearance: none;
+			-moz-appearance:   none;
+			appearance: none;
+			width: 100%;
+			height: 100%;
+			padding: 8px 10px;
+			background-color: var(--text-color);
+			color: var(--white-color);
+			cursor: pointer;
+		}
+		.rsvp__button{
+			max-width: 100%;
+		}
+
+		/* RSVP Respon */
+		.rsvp__respon{
+		   display: -webkit-box;
+		   display: -ms-flexbox;
+		   display: flex;
+		   -webkit-box-pack: start;
+			   -ms-flex-pack: start;
+				   justify-content: flex-start;
+		   -webkit-box-align: center;
+			   -ms-flex-align: center;
+				   align-items: center;
+		   -webkit-column-gap: .3rem;
+			  -moz-column-gap: .3rem;
+				   column-gap: .3rem;
+		   display: none;
+		}
+		.rsvp__respon-icon{
+		   font-size: 1.3rem;
+		}
+
+		/* Show RSVP Respon */
+		.rsvp-respon{
+		   display: -webkit-box !important;
+		   display: -ms-flexbox !important;
+		   display: flex !important;
+		}
+		/* ===== end rsvp ===== */
+
+		/* ===== WEDDING GIFT ===== */
+		.gift__title{
+			margin-bottom: 0 !important;
+		}
+		.gift__container{
+			text-align: center;
+			border-radius: 2rem;
+			padding: 2.5rem 1.5rem 3rem;
+			box-shadow: -15px -15px 15px rgba(0,0,0,.1),
+							15px 15px 15px rgba(0,0,0,.1);
+		}
+		.an{
+			display: block;
+			margin-bottom: 1rem;
+		}
+		.bank__icon{
+			width: 120px;
+			object-fit: cover;
+			margin-bottom: .5rem;
+		}
+		.gift__rekening{
+			display: none;
+		}
+
+		/* Show Rekening */
+		.show-rekening{
+			display: -ms-grid;
+			display: grid;
+		}
+		.show-rekening .gift__button{
+			margin-bottom: 3rem !important;
+		}
+		/* ===== end wedding gift ===== */
+
+		/* ===== LIVE STREAMING ===== */
+		.streaming__container{
+			padding: 2.5rem 1.5rem;
+			background-color: var(--beige-color);
+			text-align: center;
+		}
+		.streaming__title{
+			margin-bottom: .5rem;
+		}
+		.streaming__description{
+			display: block;
+			margin-bottom: 2rem;
+		}
+		/* ===== end live streaming ===== */
+
+		/* ===== GROOMSMEN & BRIDESMAID ===== */
+		.maids .section__title{
+			margin-bottom: 2rem;
+		}
+		.maids__nav{
+			margin-bottom: 2rem;
+		}
+		.maids__list li{
+			padding: 0.2rem 1rem;
+			cursor: pointer;
+			font-weight: var(--medium-font);
+			text-transform: uppercase;
+			-webkit-transition: .1s;
+			transition: .1s;
+		}
+		.maids__list li.active-maids{
+			background-color: var(--text-color);
+			color: var(--white-color);
+		}
+
+		/* Maids Nav */
+		.maids__list{
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			gap: 1rem !important;
+			margin-bottom: 2rem;
+		}
+		.maids__container{
+			-ms-grid-columns: (minmax(150px,1fr))[auto-fit];
+				grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+		}
+		.maids__box{
+			text-align: center;
+		}
+		.maids__img{
+			width: 150px;
+			height: 150px;
+			position: relative;
+			border-radius: 50%;
+			overflow: hidden;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.maids__img img{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			-o-object-fit: cover;
+			   object-fit: cover;
+			-o-object-position: center;
+			   object-position: center;
+		}
+		.maid__name{
+			display: block;
+			margin: .5rem 0;
+			font-weight: var(--medium-font);
+		}
+		/* ===== end groomsmen & bridesmaid ===== */
+
+		/* ===== PROKES ===== */
+		.prokes .section__title{
+			margin-bottom: 0;
+		}
+		.prokes__content{
+			background-color: var(--beige-color);
+			border-radius: 1.5rem;
+			padding: 2rem 1rem;
+		}
+		.prokes__container{
+			-ms-grid-columns: (minmax(120px,1fr))[auto-fit];
+				grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+		}
+		.prokes__img{
+			width: 120px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.prokes__description{
+			font-weight: var(--semi-bold-font);
+			display: block;
+			text-align: center;
+		}
+		/* ===== end prokes ====== */
+
+		/* ===== FOOTER ===== */
+		footer span{
+			display: block;
+		}
+		footer{
+			background: rgba(255,255,255,.1) url(assets/img/pic1.jpg) no-repeat center/cover;
+			background-blend-mode: overlay;
+			text-align: center;
+			padding: 72px 0 32px;
+			padding: 4.5rem 0 2rem;
+			margin-top: 80px;
+			margin-top: 5rem;
+			position: relative;
+		}
+		footer::before{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 150px;
+			z-index: 1;
+			background: -webkit-linear-gradient(top,#FDFAF6,transparent);
+			background: linear-gradient(to bottom,#FDFAF6,transparent);
+		}
+
+		/* Quotes */
+		.quotes{
+			margin-bottom: 5rem;
+			position: relative;
+			z-index: 10;
+		}
+		.quotes span{
+			display: block;
+		}
+		.quotes__title{
+			font-family: var(--subtitle-font);
+			font-size: 1.8rem;
+			font-weight: var(--semi-bold-font);
+		}
+		.quotes__note{
+			font-weight: var(--semi-bold-font);
+			margin-top: .5rem;
+		}
+		.footer__box:first-child{
+			margin-bottom: 3rem;
+		}
+		.footer__title,
+		.footer__description{
+			font-size: var(--small-font-size);
+		}
+		.footer__description{
+			margin-bottom: 1rem;
+		}
+		.footer__note{
+			font-style: italic;
+			margin-bottom: 1rem;
+			font-size: var(--small-font-size);
+		}
+		/* ===== end footer ===== */
+
+		/* ===== BACKSOUND ===== */
+		.backsound{
+		   width: 40px;
+		   height: 40px;
+		   background-color: var(--text-color);
+		   border-radius: 50%;
+		   display: -webkit-box;
+		   display: -ms-flexbox;
+		   display: flex;
+		   -webkit-box-pack: center;
+			   -ms-flex-pack: center;
+				   justify-content: center;
+		   -webkit-box-align: center;
+			   -ms-flex-align: center;
+				   align-items: center;
+		   position: fixed;
+		   right: 1rem;
+		   bottom: 1.5rem;
+		}
+		.backsound__icon{
+		   width: 23px;
+		   -o-object-fit: cover;
+			  object-fit: cover;
+		   cursor: pointer;
+		   -webkit-filter: invert(1);
+				   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="1 0" /><feFuncG type="table" tableValues="1 0" /><feFuncB type="table" tableValues="1 0" /></feComponentTransfer></filter></svg>#filter');
+				   filter: invert(1);
+		}
+		/* ===== end backsound ===== */
+
+		/* ===== POPUP ===== */
+		.popup{
+		   position: fixed;
+		   top: 0;
+		   left: 0;
+		   width: 100%;
+		   height: 100%;
+		   overflow: hidden;
+		   background-color: rgba(0,0,0,.7);
+		   -webkit-backdrop-filter: blur(15px);
+				 backdrop-filter: blur(15px);
+		   display: -webkit-box;
+		   display: -ms-flexbox;
+		   display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+		   z-index: var(--z-popup);
+		}
+		.popup__container{
+			text-align: center;
+			background-color: var(--body-color);
+			border-radius: .5rem;
+			overflow: hidden;
+		}
+		.popup__content{
+			padding: 0 1rem;
+		}
+		.popup__img{
+			width: 100%;
+			height: 280px;
+			position: relative;
+		}
+		.popup__img img{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			-o-object-fit: cover;
+			   object-fit: cover;
+			-o-object-position: center;
+			   object-position: center;
+		}
+		.popup__subtitle{
+			font-weight: var(--regular-font);
+			margin-bottom: .5rem;
+		}
+		.popup__subtitle2{
+			font-weight: var(--regular-font);
+		}
+		.popup__title{
+			font-family: var(--subtitle-font);
+			font-size: var(--h1-font-size);
+			margin: 1rem 0 2rem;
+		}
+		.popup__button{
+			margin-bottom: 1.5rem !important;
+		}
+		/* ===== end pop up ===== */
+
+		/* ===== PASSWORD WEBSITE ===== */
+		.password{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			z-index: var(--z-password);
+			background: rgba(255,255,255,.6) url(assets/img/pic2.jpg) no-repeat center/cover;
+			background-blend-mode: overlay;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+				-ms-flex-pack: center;
+					justify-content: center;
+			-webkit-box-align: center;
+				-ms-flex-align: center;
+					align-items: center;
+		}
+		.password__box:first-child{
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+		.password__names{
+			font-family: var(--title-font);
+			font-size: 2.6rem;
+			margin-top: 1rem;
+			line-height: 1.3;
+		}
+		.password__field label{
+			display: block;
+			font-size: var(--h3-font-size);
+			font-weight: var(--medium-font);
+			margin-bottom: .3rem;
+		}
+		.password__input{
+			display: block;
+			width: 100%;
+			outline: none;
+			border: 1px solid #D9D9D9;
+			padding: 0.5rem;
+			font-family: var(--text-font);
+			font-size: var(--normal-font-size);
+			color: var(--text-color);
+			border-radius: .3rem;
+		}
+		.password__input:focus{
+			border: 1px solid var(--beige-color);
+		}
+		.password__button{
+			max-width: 100%;
+			margin-top: 1rem;
+			cursor: pointer;
+			text-align: center;
+		}
+		/* ===== end password website ===== */
+
+		/* ===== MEDIA QUERIS ===== */
+		@media screen and (max-width: 320px){
+			/* ===== NAV ===== */
+			.nav__name{
+				display: none;
+			}
+			.active-link::before{
+				display: block;
+			}
+			/* ===== end nav ===== */
+		}
+
+		@media screen and (max-width: 370px){
+			/* ===== EVENT ===== */
+			.event__img{
+				width: 140px;
+				margin-top: -2rem;
+			}
+			/* ===== end event ===== */
+		}
+
+		@media screen and (max-width: 336px){
+			/* ===== GALLERY ===== */
+			.gallery__container{
+				-ms-grid-columns: (minmax(100%,1fr))[auto-fit];
+					grid-template-columns: repeat(auto-fit, minmax(100%,1fr));
+			}
+			/* ===== end gallery ===== */
+		}
+
+		@media screen and (min-width: 536px){
+			/* ===== GALLERY ===== */
+			.gallery__container{
+				-ms-grid-columns: (1fr)[2];
+					grid-template-columns: repeat(2,1fr);
+			}
+			/* ===== end gallery ===== */
+		}
+
+		@media screen and (max-width: 568px){
+			/* ===== LOVE STORY ===== */
+			figure{
+				max-width: 250px !important;
+				height: 320px !important;
+			}
+			.polaroid__img{
+				height: 250px !important;
+			}
+			/* ===== end love story ===== */
+		}
+
+		@media screen and (min-width: 568px){
+			/* ===== WEDDING GIFT ===== */
+			.gift__rekening{
+				-ms-grid-columns: (1fr)[2];
+					grid-template-columns: repeat(2,1fr);
+			}
+			/* ===== end wedding gift ===== */
+
+			/* ===== PROKES ===== */
+			.prokes__container{
+				-ms-grid-columns: (1fr)[3];
+					grid-template-columns: repeat(3,1fr);
+			}
+			/* ===== end prokes ===== */
+		}
+
+		@media screen and (min-width: 768px){
+			/* ===== CLASS CSS ===== */
+			.section{
+				padding-top: 5rem;
+			}
+			/* ===== end class css ===== */
+
+			/* ===== NAV ====== */
+			.nav__menu{
+				padding-bottom: 1rem;
+			}
+			.nav__list{
+				-ms-grid-columns: (1fr)[5];
+					grid-template-columns: repeat(5,1fr);
+			}
+			.nav__name{
+				font-size: var(--normal-font-size);
+			}
+			.nav__icon{
+				width: 40px;
+			}
+			.nav__close{
+				right: 1.5rem;
+				bottom: 1rem;
+			}
+			/* ===== end nav ===== */
+
+			/* ===== LOVE STORY ===== */
+			.story{
+				padding-top: 6.5rem;
+			}
+			.story__container{
+				-ms-grid-columns: (1fr)[2];
+					grid-template-columns: repeat(2,1fr);
+			}
+			figure{
+				max-width: 320px !important;
+				height: 420px !important;
+			}
+			.polaroid__img{
+				height: 320px !important;
+			}
+			/* ===== end love story ===== */
+
+			/* ===== COUPLE ===== */
+			.couple__container{
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			}
+			.couple__img{
+				width: 50%;
+			}
+			.couple__box{
+				-ms-flex-preferred-size: 50%;
+					flex-basis: 50%;
+			}
+			.couple__data{
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+					-ms-flex-direction: column;
+						flex-direction: column;
+				width: 500px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.groom__data{
+				text-align: left;
+			}
+			.couple__name{
+				font-size: 2.5rem;
+			}
+			.couple__icon{
+				width: 60px;
+			}
+			.couple__line,
+			.couple .social__media{
+				margin-left: initial;
+				margin-right: initial;
+			}
+			.bride__data{
+				text-align: right;
+			}
+			.bride__data .couple__line,
+			.bride__data .social__media{
+				margin-left: auto;
+			}
+			/* ===== end couple ===== */
+
+			/* ===== EVENT ===== */
+			.events__container{
+				-ms-grid-columns: (auto)[3];
+					grid-template-columns: repeat(3,auto);
+				-webkit-box-align: center;
+					-ms-flex-align: center;
+							-ms-grid-row-align: center;
+						align-items: center;
+			}
+			.event__quote{
+				font-size: 3.5rem;
+			}
+			/* ===== end event ===== */
+
+			/* ===== GALLERY ===== */
+			.gallery__box{
+				height: 400px;
+			}
+			/* ===== end gallery ===== */
+
+			/* ===== VIDEO ===== */
+			.video{
+				margin-bottom: 2.5rem;
+			}
+			.video__frame{
+				width: 90% !important;
+				height: 450px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.video__play-icon{
+				font-size: 6rem;
+			}
+			.video__sample{
+				max-width: 700px !important;
+			}
+			/* ===== end video ===== */
+
+			/* ===== GROOMSMEN & BRIDESMAID ===== */
+			.maids__container{
+			-ms-grid-columns: (minmax(200px,1fr))[auto-fit];
+				grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+			}
+			.maids__img{
+				width: 200px;
+				height: 200px;
+			}
+			/* ===== end groomsmen & bridesmaid ===== */
+
+			/* ===== PROKES ===== */
+			.prokes .section__subtitle{
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.prokes__img{
+				width: 160px;
+			}
+			/* ===== end prokes ===== */
+
+			/* ===== FOOTER ===== */
+			footer{
+				padding: 6.5rem 0 2.5rem;
+			}
+			footer::after{
+				height: 200px;
+			}
+
+			/* Quotes */
+			.quotes__title{
+				font-size: 2.5rem;
+			}
+			/* ===== end footer ===== */
+
+			/* ===== POP UP ===== */
+			.popup__container{
+				-ms-grid-columns: (1fr)[2];
+					grid-template-columns: repeat(2,1fr);
+				-webkit-box-align: center;
+					-ms-flex-align: center;
+							-ms-grid-row-align: center;
+						align-items: center;
+				height: 80vh;
+			}
+			.popup__img{
+				height: 100%;
+			}
+			.popup__btn{
+				width: 60%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			/* ===== end pop up ===== */
+
+			/* ===== WEBSITE PASSWORD ===== */
+			.password__container{
+				-ms-grid-columns: (1fr)[2];
+					grid-template-columns: repeat(2,1fr);
+				-webkit-box-align: center;
+					-ms-flex-align: center;
+							-ms-grid-row-align: center;
+						align-items: center;
+			}
+			.password__box:first-child{
+				width: -webkit-max-content;
+				width: -moz-max-content;
+				width: max-content;
+			}
+			.password__names{
+				font-size: 3.5rem;
+			}
+			/* ===== end password website ===== */
+		}
+
+		@media screen and (min-width: 930px){
+			/* ===== GALLERY ===== */
+			.gallery__container{
+				-ms-grid-columns: (1fr)[3];
+					grid-template-columns: repeat(3,1fr);
+			}
+			/* ===== end gallery ===== */
+		}
+
+		@media screen and (min-width: 1024px){
+			/* ===== LAYOUT ===== */
+			.container{
+				margin-left: auto;
+				margin-right: auto;
+			}
+			/* ===== end layout ===== */
+
+			/* ===== NAV ===== */
+			.nav__list{
+				-ms-grid-columns: (1fr)[9];
+					grid-template-columns: repeat(9,1fr);
+			}
+			.nav__list{
+				width: 950px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			/* ===== end nav ===== */
+		}
+		/* ===== end media queris ===== */
+	</style>
+	<!-- ===== end main css ===== -->
+
+	<title>Wedding Invitation - Shinta & Rama</title>
+</head>
+<body>
+	<!-- ===== HEADER ===== -->
+	<header class="l-header" id="header">
+		<nav class="nav container">
+			<div class="nav__menu" id="nav-menu">
+				<ul class="nav__list">
+					<li class="nav__item">
+						<a href="#home" class="nav__link active-link">
+							<img src="assets/img/home.png" alt="" class="nav__icon">
+							<span class="nav__name">Home</span>
+						</a>
+					</li>
+					<li class="nav__item">
+						<a href="#story" class="nav__link">
+							<img src="assets/img/love_story.png" alt="" class="nav__icon">
+							<span class="nav__name">Story</span>
+						</a>
+					</li>
+					<li class="nav__item">
+						<a href="#couple" class="nav__link">
+							<img src="assets/img/couple.png" alt="" class="nav__icon">
+							<span class="nav__name">Couple</span>
+						</a>
+					</li>
+					<li class="nav__item">
+						<a href="#event" class="nav__link">
+							<img src="assets/img/event.png" alt="" class="nav__icon">
+							<span class="nav__name">Event</span>
+						</a>
+					</li>
+					<li class="nav__item">
+						<a href="#gallery" class="nav__link">
+							<img src="assets/img/gallery_icon.png" alt="" class="nav__icon">
+							<span class="nav__name">Gallery</span>
+						</a>
+					</li>
+					<li class="nav__item">
+						<a href="#rsvp" class="nav__link">
+							<img src="assets/img/rsvp.png" alt="" class="nav__icon">
+							<span class="nav__name">RSVP</span>
+						</a>
+					</li>
+					<li class="nav__item">
+						<a href="#gift" class="nav__link">
+							<img src="assets/img/gift.png" alt="" class="nav__icon">
+							<span class="nav__name">Gift</span>
+						</a>
+					</li>
+					<li class="nav__item">
+						<a href="#streaming" class="nav__link">
+							<img src="assets/img/live.png" alt="" class="nav__icon">
+							<span class="nav__name">Streaming</span>
+						</a>
+					</li>
+					<li class="nav__item">
+						<a href="#maids" class="nav__link">
+							<img src="assets/img/bridesmaid.png" alt="" class="nav__icon">
+							<span class="nav__name">Maids</span>
+						</a>
+					</li>
+				</ul>
+				<i class='bx bx-x nav__close' id="nav-close"></i>
+			</div>
+
+			<div class="nav__toggle" id="nav-toggle">
+				<i class='bx bx-menu menu__icon'></i>
+			</div>
+		</nav>
+	</header>
+	<!-- ===== end header ===== -->
+
+	<!-- ===== MAIN ===== -->
+	<main class="l-main">
+		<!-- ===== HOME ===== -->
+		<section class="home" id="home">
+			<div class="home__slideshow">
+				<div class="slideshow__item">
+					<img src="assets/img/pic1.jpg" alt="">
+				</div>
+				<div class="slideshow__item">
+					<img src="assets/img/pic2.jpg" alt="">
+				</div>
+				<div class="slideshow__item">
+					<img src="assets/img/pic3.jpg" alt="">
+				</div>
+			</div>
+
+			<div class="home__container">
+				<div class="home__content container" data-aos="fade-down">
+					<h2 class="home__subtitle">The Wedding of</h2>
+					<h1 class="home__title">Shinta<br>&<br>Rama</h1>
+					<div class="home__date">
+						&mdash;
+						<span>25th</span>
+						<i class='bx bxs-heart home__icon'></i>
+						<span>12</span>
+						<i class='bx bxs-heart home__icon'></i>
+						<span>2022</span>
+						&mdash;
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end home ===== -->
+
+		<!-- ===== LOVE STORY ===== -->
+		<section class="story section container" id="story">
+			<div class="story__container bd-grid">
+				<div class="story__box" data-aos="zoom-in-right">
+					<figure>
+						<img src="assets/img/pic1.jpg" alt="" class="polaroid__img">
+					</figure>
+				</div>
+				<div class="story__box" data-aos="zoom-in-left">
+					<h2 class="story__title">Our Love Story</h2>
+					<div class="accordion__container">
+						<!-- 1 -->
+						<div class="accordion__item">
+							<div class="accordion__title">
+								<span class="accordion__title-text">First Meet</span>
+							</div>
+							<div class="accordion__description">
+								<div class="accordion__description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
+							</div>
+						</div>
+						<!-- 2 -->
+						<div class="accordion__item">
+							<div class="accordion__title">
+								<span class="accordion__title-text">Two Become One</span>
+							</div>
+							<div class="accordion__description">
+								<div class="accordion__description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
+							</div>
+						</div>
+						<!-- 3 -->
+						<div class="accordion__item">
+							<div class="accordion__title">
+								<span class="accordion__title-text">Engagement</span>
+							</div>
+							<div class="accordion__description">
+								<div class="accordion__description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
+							</div>
+						</div>
+						<!-- 4 -->
+						<div class="accordion__item">
+							<div class="accordion__title">
+								<span class="accordion__title-text">Endless Love</span>
+							</div>
+							<div class="accordion__description">
+								<div class="accordion__description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end love story ===== -->
+
+		<!-- ===== COUPLE ===== -->
+		<section class="couple section" id="couple">
+			<div class="couple__container">
+				<div class="couple__img"></div>
+				<div class="couple__box">
+					<h2 class="section__title">Groom & Bride </h2>
+					<div class="couple__data">
+						<div class="groom__data" data-aos="zoom-in-right">
+							<img src="assets/img/suit.png" alt="" class="couple__icon">
+							<h2 class="couple__name">Rama</h2>
+							<div class="couple__line"></div>
+							<span class="couple__subtitle">The Son of:</span>
+							<span class="couple__description">Mr. Rama & Mrs. Rama</span>
+							<div class="social__media">
+								<a href="#" class="social__media-link">
+									<i class='bx bxl-instagram social__icon'></i>
+									<span>Instagram</span>
+								</a>
+							</div>
+						</div>
+						<div class="bride__data" data-aos="zoom-in-left">
+							<img src="assets/img/wedding-dress.png" alt="" class="couple__icon">
+							<h2 class="couple__name">Shinta</h2>
+							<div class="couple__line"></div>
+							<span class="couple__subtitle">The daughter of:</span>
+							<span class="couple__description">Mr. Shinta & Mrs. Shinta</span>
+							<div class="social__media">
+								<a href="#" class="social__media-link">
+									<i class='bx bxl-instagram social__icon'></i>
+									<span>Instagram</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end couple ===== -->
+
+		<!-- ===== EVENT ===== -->
+		<section class="event section" id="event">
+			<h2 class="section__title">Event</h2>
+
+			<div class="events__container container bd-grid">
+				<div class="events__box" data-aos="zoom-in-right">
+					<h2 class="event__title">MAIN CEREMONY</h2>
+					<div class="time">
+						<div class="time__box">
+							<i class='bx bx-time event__icon'></i> 
+							<span>10:00 WIB</span>
+						</div>
+						<div class="time__box">
+							<i class='bx bx-calendar event__icon'></i> 
+							<span>25<br>December<br>2022</span>
+						</div>
+					</div>
+					<div class="event__img-line">
+						<div class="event__line"></div>
+						<img src="assets/img/doves_white.svg" alt="" class="event__img">
+						<div class="event__line"></div>
+					</div>
+					<div class="address">
+						<h3 class="place">ADIMULIA HOTEL MEDAN</h3>
+						<span class="place__description">Jl. Pangeran Diponegoro No.8, Petisah Tengah, Kec. Medan Petisah, Kota Medan, Sumatera Utara 20112</span>
+					</div>
+					<div class="button event__button">
+						<a href="https://www.google.com/maps/place/Katedral+Myeongdong/@37.5631812,126.9851717,17z/data=!3m1!4b1!4m5!3m4!1s0x357ca2e54c5068b3:0x44b42da266a7c893!8m2!3d37.563177!4d126.9873604?hl=id" target="_blank" class="button--flex">
+							<i class='bx bx-map button__icon'></i>
+							<span>Get Location</span>
+						</a>
+					</div>
+				</div>
+
+				<h1 class="event__quote" data-aos="zoom-in">Our<br>Special<br>Events!</h1>
+
+				<div class="events__box" data-aos="zoom-in-left">
+					<h2 class="event__title">WEDDING PARTY</h2>
+					<div class="time">
+						<div class="time__box">
+							<i class='bx bx-time event__icon'></i> 
+							<span>13:00 WIB</span>
+						</div>
+						<div class="time__box">
+							<i class='bx bx-calendar event__icon'></i> 
+							<span>25<br>December<br>2022</span>
+						</div>
+					</div>
+					<div class="event__img-line">
+						<div class="event__line"></div>
+						<img src="assets/img/doves_white.svg" alt="" class="event__img">
+						<div class="event__line"></div>
+					</div>
+					<div class="address">
+						<h3 class="place">ADIMULIA HOTEL MEDAN</h3>
+						<span class="place__description">Jl. Pangeran Diponegoro No.8, Petisah Tengah, Kec. Medan Petisah, Kota Medan, Sumatera Utara 20112</span>
+					</div>
+					<div class="button event__button">
+						<a href="https://www.google.com/maps/place/Katedral+Myeongdong/@37.5631812,126.9851717,17z/data=!3m1!4b1!4m5!3m4!1s0x357ca2e54c5068b3:0x44b42da266a7c893!8m2!3d37.563177!4d126.9873604?hl=id" target="_blank" class="button--flex">
+							<i class='bx bx-map button__icon'></i>
+							<span>Get Location</span>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="timer container">
+				<div class="timer__container bd-grid">
+					<div class="timer__box">
+						<div class="timer__number" id="days">0</div>
+						<span class="timer__description">Hari</span>			
+					</div>
+					<div class="timer__box">
+						<div class="timer__number" id="hours">0</div>
+						<span class="timer__description">Jam</span>
+					</div>
+					<div class="timer__box">
+						<div class="timer__number" id="minutes">0</div>
+						<span class="timer__description">Menit</span>
+					</div>
+					<div class="timer__box">
+						<div class="timer__number" id="seconds">0</div>
+						<span class="timer__description">Detik</span>
+					</div>
+				</div>
+				<h4 id="timer-stop"></h4>
+			</div>
+		</section>
+		<!-- ===== end event ===== -->
+
+		<!-- ===== GALLERY ===== -->
+		<section class="gallery section container" id="gallery">
+			<h2 class="section__title">Our Journey Starts Here</h2>
+			<span class="section__subtitle">I don’t want the heavens or the shooting stars. I don’t want no gemstones or shining golds. All I want is; a steady hand. A kind soul. Within you.</span>
+
+			<div class="gallery__container bd-grid">
+				<div class="gallery__box">
+					<a href="assets/img/pic1.jpg" data-fancybox="gallery" data-caption="Love">
+						<img src="assets/img/pic1.jpg" alt="">
+					</a>
+				</div>
+				<div class="gallery__box">
+					<a href="assets/img/pic2.jpg" data-fancybox="gallery" data-caption="Love">
+						<img src="assets/img/pic2.jpg" alt="">
+					</a>
+				</div>
+				<div class="gallery__box">
+					<a href="assets/img/pic3.jpg" data-fancybox="gallery" data-caption="Love">
+						<img src="assets/img/pic3.jpg" alt="">
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end gallery ===== -->
+
+		<!-- ===== VIDEO ===== -->
+		<section class="video container">
+			<div class="video__container">
+				<div class="video__frame" data-aos="fade-down">
+					<div class="video__play" id="video-play">
+						<i class='bx bx-play-circle video__play-icon'></i>
+					</div>
+				</div>
+
+				<div class="video__content" id="video-content">
+					<video src="assets/video/video_sample.mp4" controls="true" class="video__sample"></video>
+					<div class="video__close" id="video-close">
+						<i class='bx bx-x video__close-icon'></i>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end video ===== -->
+
+		<!-- ===== RSVP ===== -->
+		<section class="rsvp section container" id="rsvp">
+			<div class="rsvp__container bd-grid" data-aos="fade-down">
+				<div class="rsvp__box-form">
+					<h2 class="rsvp__title">RSVP</h2>
+					<span class="rsvp__subtitle">Valid for 2 people and please kindly help us prepare everything better by confirming your attendance to our wedding event with the following RSVP form:</span>
+					<form class="rsvp__form" name="rsvp-input-data">
+						<!-- Name -->
+						<div class="rsvp__field">
+							<input type="text" class="rsvp__input validate" name="Name" required="" value="" placeholder="Your Name">
+						</div>
+						<!-- Message -->
+						<div class="rsvp__field">
+							<textarea class="rsvp__textarea" id="rsvp-textarea" required="" name="Message" placeholder="Wishes for Shinta & Rama"></textarea>
+						</div>
+						<!-- Attend -->
+						<div class="rsvp__field">
+							<label>Will you be attending?</label>
+							<div class="radio__box">
+								<input type="radio" value="Yes" checked="checked" class="radio__input" name="Attend"><span class="radio__text">Yes, I will</span>
+							</div>
+							<div class="radio__box">
+								<input type="radio" value="No" class="radio__input" name="Attend"><span class="radio__text">Sorry, I can't</span>
+							</div>
+						</div>
+						<!-- Amount -->
+						<div class="rsvp__field">
+							<label>How many people you coming with?</label>
+							<div class="select__box">
+								<select name="Amount">
+									<option value="-">-</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>
+							</div>
+						</div>
+
+						<button type="submit" class="button button--flex rsvp__button">
+							<i class='bx bx-envelope button__icon'></i>
+							<span>Send</span>
+						</button>
+					</form>
+				</div>
+
+				<!-- RSVP Modal -->
+				<div class="rsvp__respon">
+					<i class='bx bx-check rsvp__respon-icon'></i>
+					<span>Thank you!</span>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end rsvp =====  -->
+
+		<!-- ===== WEDDING GIFT ===== -->
+		<section class="gift section container" id="gift">
+			<div class="gift__container" data-aos="fade-down">
+				<h2 class="gift__title">Wedding Gift</h2>
+				<span class="gift__subtitle">We understand that some of you might want to send us a greeting or gift, so please tap the following buttons to send them to us:</span>
+
+				<div class="button button--flex" id="gift-button">
+					<i class='bx bx-gift button__icon'></i>
+					<span>Wedding Gift</span>
+				</div>
+
+				<div class="gift__rekening bd-grid" id="gift-rekening">
+					<div class="rekening__box">
+						<img src="assets/img/bca.png" alt="" class="bank__icon">
+						<h3 class="bank">BCA – <span id="bca">123123123</span></h3>
+						<span class="an">an. Lorem Ipsum</span>
+
+						<div class="button button--flex copy__bca">
+							<i class='bx bx-copy button__icon'></i>
+							<span>Copy Number</span>
+						</div>
+					</div>
+					<div class="rekening__box">
+						<img src="assets/img/mandiri.png" alt="" class="bank__icon">
+						<h3 class="bank">Mandiri – <span id="mandiri">456456456</span></h3>
+						<span class="an">an. Lorem Ipsum</span>
+
+						<div class="button button--flex copy__mandiri">
+							<i class='bx bx-copy button__icon'></i>
+							<span>Copy Number</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end wedding gift ===== -->
+
+		<!-- ===== LIVE STREAMING ===== -->
+		<section class="streaming section container" id="streaming">
+			<div class="streaming__container" data-aos="fade-down">
+				<h2 class="streaming__title">LIVE WEDDING</h2>
+				<span class="streaming__description">Considering the Covid-19 pandemic, we are unable to invite all of you in person. We’re still utterly in love, but it’s important to us that everyone stays safe, so alongside with the real event we also plan to publish our wedding virtually via Live Streaming below:</span>
+
+				<div class="button">
+					<a href="#" class="button__link">Live Streaming</a>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end live streaming ===== -->
+
+		<!-- ===== GROOMSMEN & BRIDESMAID ===== -->
+		<section class="maids section container" id="maids">
+			<h2 class="section__title">Groomsmen & Bridesmaid</h2>
+
+			<div class="maids__nav" data-aos="fade-down">
+				<ul class="maids__list">
+					<li class="active-maids">groomsmen</li>
+					<li>bridesmaid</li>
+				</ul>
+			</div>
+
+			<div class="maids__container bd-grid" data-aos="fade-down" data-aos-delay="100">
+				<!-- Groomsmen -->
+				<div class="maids__box" data-id="groomsmen">
+					<div class="maids__img">
+						<img src="assets/img/groomman.png" alt="">
+					</div>
+					<span class="maid__name">Kim Woo Bin</span>
+					<a href="#" class="social__link-round"><i class='bx bxl-instagram'></i></a>
+				</div>
+				<div class="maids__box" data-id="groomsmen">
+					<div class="maids__img">
+						<img src="assets/img/groomman.png" alt="">
+					</div>
+					<span class="maid__name">Kim Woo Bin</span>
+					<a href="#" class="social__link-round"><i class='bx bxl-instagram'></i></a>
+				</div>
+				<div class="maids__box" data-id="groomsmen">
+					<div class="maids__img">
+						<img src="assets/img/groomman.png" alt="">
+					</div>
+					<span class="maid__name">Kim Woo Bin</span>
+					<a href="#" class="social__link-round"><i class='bx bxl-instagram'></i></a>
+				</div>
+
+				<!-- Bridesmaid -->
+				<div class="maids__box" data-id="bridesmaid">
+					<div class="maids__img">
+						<img src="assets/img/bridemaid.jpg" alt="">
+					</div>
+					<span class="maid__name">Shin Min-A</span>
+					<a href="#" class="social__link-round"><i class='bx bxl-instagram'></i></a>
+				</div>
+				<div class="maids__box" data-id="bridesmaid">
+					<div class="maids__img">
+						<img src="assets/img/bridemaid.jpg" alt="">
+					</div>
+					<span class="maid__name">Shin Min-A</span>
+					<a href="#" class="social__link-round"><i class='bx bxl-instagram'></i></a>
+				</div>
+				<div class="maids__box" data-id="bridesmaid">
+					<div class="maids__img">
+						<img src="assets/img/bridemaid.jpg" alt="">
+					</div>
+					<span class="maid__name">Shin Min-A</span>
+					<a href="#" class="social__link-round"><i class='bx bxl-instagram'></i></a>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end groomsmen & bridesmaid ===== -->
+
+		<!-- ===== PROKES ===== -->
+		<section class="prokes section container">
+			<div class="prokes__content">
+				<h2 class="section__title">Health Protocol</h2>
+				<span class="section__subtitle">It’s important to us that everyone stays safe, please read carefully our Wedding Day Covid-19 Guidance before attending the event:</span>
+
+				<div class="prokes__container bd-grid">
+					<div class="prokes__box">
+						<div class="prokes__img">
+							<img src="assets/img/prokes1.png" alt="">
+						</div>
+						<span class="prokes__description">Wear a Mask</span>
+					</div>
+					<div class="prokes__box">
+						<div class="prokes__img">
+							<img src="assets/img/prokes2.png" alt="">
+						</div>
+						<span class="prokes__description">Wash Your Hand</span>
+					</div>
+					<div class="prokes__box">
+						<div class="prokes__img">
+							<img src="assets/img/prokes3.png" alt="">
+						</div>
+						<span class="prokes__description">Social Distancing</span>
+					</div>
+					<div class="prokes__box">
+						<div class="prokes__img">
+							<img src="assets/img/prokes4.png" alt="">
+						</div>
+						<span class="prokes__description">Handshakes are prohibited</span>
+					</div>
+					<div class="prokes__box">
+						<div class="prokes__img">
+							<img src="assets/img/prokes5.png" alt="">
+						</div>
+						<span class="prokes__description">Temperature Check</span>
+					</div>
+					<div class="prokes__box">
+						<div class="prokes__img">
+							<img src="assets/img/prokes6.png" alt="">
+						</div>
+						<span class="prokes__description">Using a hand sanitizer</span>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ===== end prokes ===== -->
+	</main>
+	<!-- ===== end main ==== -->
+
+	<!-- ===== FOOTER ===== -->
+	<footer>
+		<div class="footer__container container">
+			<!-- ===== QUOTES ===== -->
+			<div class="quotes" data-aos="fade-down">
+				<div class="quotes__container">
+					<span class="quotes__title">Two Become One</span>
+					<span class="quotes__description">So they are no longer two but one flesh. Therefore what God has joined together, let no one separate.</span>
+					<span class="quotes__note">(Matthew 19 :6)</span>
+				</div>
+			</div>
+			<!-- ===== end quotes ===== -->
+
+			<div class="footer__box" data-aos="fade-down" data-aos-delay="100">
+				<span class="footer__title">By: Undang Digital Aja</span>
+				<span class="footer__description">Your Partner for Digital Invitation Website</span>
+				<span class="footer__note">(Photo by Pham Hoang Kha from Pexels)</span>
+				<div class="social__media-round">
+					<!-- IG -->
+					<a href="https://www.instagram.com/undangdigitalaja/" class="social__link-round" target="_blank">
+						<i class='bx bxl-instagram'></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- ===== end footer ===== -->
+
+	<!-- ===== BACKSOUND ===== -->
+	<div class="backsound">
+		<img src="assets/img/play.png" alt="" class="backsound__icon" id="backsound-icon">
+		<audio id="song" loop>
+			<source src="assets/backsound/jesusnyou.mp3" type="audio/mp3">
+		</audio>
+	</div>
+	<!-- ===== end backsound ===== -->
+
+	<!-- ===== POP UP ===== -->
+	<div class="popup" id="popup">
+		<div class="popup__container container bd-grid" data-aos="fade-down">
+			<div class="popup__img">
+				<img src="assets/img/pic2.jpg" alt="">
+			</div>
+			<div class="popup__content">
+				<h2 class="popup__subtitle">Welcome</h2>
+				<div class="popup__line"></div>
+				<h3 class="popup__subtitle2">You are invited to the wedding of</h3>
+				<h1 class="popup__title">Shinta & Rama</h1>
+				<div class="button button--flex popup__button" id="popup-btn">
+					<i class='bx bx-envelope button__icon'></i>
+					<span>Open Invitation</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ===== end pop-up ===== -->
+
+	<!-- ===== PASSWORD WEBSITE ===== -->
+	<div class="password" id="password">
+		<div class="password__container container bd-grid">
+			<div class="password__box">
+				<h2 class="password__title">The Wedding of:</h2>
+				<h1 class="password__names">Shinta<br>&<br>Rama</h1>
+			</div>
+			<div class="password__box">
+				<form class="password__form">
+					<div class="password__field">
+						<label>Password:</label>
+						<input type="password" class="password__input" id="password-input">
+					</div>
+					<div class="password__button button">Send</div>
+					<h3>Password: 123456</h3>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- ===== end password website ===== -->
+
+	<!-- ===== FANCYAPPS JS ===== -->
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+	<!-- ===== AOS ANIMATE JS ===== -->
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+	<!-- ===== MAIN JAVASCRIPT ===== -->
+	<script>
+		// ===== SHOW MENU ===== //
+		const navMenu = document.getElementById('nav-menu'),
+				toggleNav = document.getElementById('nav-toggle'),
+				closeNav = document.getElementById('nav-close');
+
+		// Show Menu
+		toggleNav.addEventListener('click', ()=>{
+			navMenu.classList.toggle('show-menu')
+		});
+
+		// Hide Menu
+		closeNav.addEventListener('click', ()=>{
+			navMenu.classList.remove('show-menu')
+		});
+		// ===== end show menu ===== //
+
+		// ===== REMOVE MOBILE MENU ===== //
+		const navLink = document.querySelectorAll('.nav__link');
+
+		function linkAction(){
+			navMenu.classList.remove('show-menu')
+		}
+		navLink.forEach(n => n.addEventListener('click',linkAction));
+		// ===== end remove mobile menu ===== //
+
+		// ===== SCROLL SECTIONS ACTIVE LINK ===== //
+		const sections = document.querySelectorAll('section[id]');
+
+		function scrollActive(){
+			const scrollY = window.pageYOffset
+
+			sections.forEach(current =>{
+				const sectionHeight = current.offsetHeight
+				const sectionTop = current.offsetTop - 50;
+				sectionId = current.getAttribute('id')
+
+				if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+					document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+				}else{
+					document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+				}
+			})
+		}
+		window.addEventListener('scroll', scrollActive);
+		// ===== end scroll sections active menu ===== //
+
+		// ===== ACCORDION LOVE STORY ===== //
+		const accordionTitles = document.querySelectorAll('.accordion__title');
+
+		accordionTitles.forEach(accordionTitle =>{
+			accordionTitle.addEventListener('click', e =>{
+				const currentlyActiveAccordion = document.querySelector('.accordion__title.active-accordion');
+
+				if(currentlyActiveAccordion && currentlyActiveAccordion !== accordionTitle){
+					currentlyActiveAccordion.classList.toggle('active-accordion');
+					currentlyActiveAccordion.nextElementSibling.style.maxHeight = 0;
+				}
+
+				accordionTitle.classList.toggle('active-accordion');
+
+				const accordionDescription = accordionTitle.nextElementSibling;
+
+				if(accordionTitle.classList.contains('active-accordion')){
+					accordionDescription.style.maxHeight = accordionDescription.scrollHeight + "px";
+				}else{
+					accordionDescription.style.maxHeight = 0;
+				}
+			})
+		})
+		// ===== end accordion love story ===== //
+
+		/* ===== COUNTDOWN TIMER ===== */
+		const countdownDate = new Date("December 25, 2022 08:00:00").getTime();
+
+		const timerFunction = setInterval(() => {
+			const currentDate = new Date().getTime();
+			const finalTime = countdownDate - currentDate;
+
+			if(finalTime > 0){
+				const days = Math.floor(finalTime / (1000*60*60*24));
+				const hours = Math.floor((finalTime % (1000*60*60*24)) / (1000*60*60));
+				const minutes = Math.floor((finalTime % (1000*60*60)) / (1000*60));
+				const seconds = Math.floor((finalTime % (1000*60)) / (1000));
+
+				document.getElementById('days').innerHTML = days;
+				document.getElementById('hours').innerHTML = hours;
+				document.getElementById('minutes').innerHTML = minutes;
+				document.getElementById('seconds').innerHTML = seconds;
+			}else{
+				clearInterval(timerFunction);
+				document.getElementById("timer-stop").innerHTML = "The Countdown is Over!";
+		   }
+		}, 1000);
+		// ===== end countdown timer ===== //
+
+		// ===== VIDEO ===== //
+		const videoPlay = document.getElementById('video-play'),
+				videoContent = document.getElementById('video-content'),
+				videoClose = document.getElementById('video-close');
+
+		videoPlay.addEventListener('click', ()=>{
+			document.body.style.overflow = 'hidden';
+			videoContent.classList.add('show-video')
+		});
+		videoClose.addEventListener('click', ()=>{
+			document.body.style.overflow = 'auto';
+			videoContent.classList.remove('show-video')
+		});
+		// ===== end video ===== //
+
+		// ===== RSVP ===== //
+		const rsvpRespon = document.querySelector('.rsvp__respon');
+		const rsvpForm = document.querySelector('.rsvp__form');
+
+		// Area Google Sheets
+		const scriptURL = 'https://script.google.com/macros/s/AKfycbxH9cyx1Q_yyEzpj4F128Oj0l3rsjSAlHG-n1TItvYMctIdBCJCU6qNnvz-LT_uA0Tdmw/exec';
+
+		const form = document.forms['rsvp-input-data']
+
+		form.addEventListener('submit', e => {
+		   e.preventDefault();
+		   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+		   .then(response => {
+			  // Alert: RSVP Respon
+			  rsvpRespon.classList.toggle('rsvp-respon');
+
+			  // Resert Form
+			  rsvpForm.reset();
+
+			  console.log('Success!', response);
+		   })
+		   .catch(error => console.error('Error!', error.message))
+		});
+		// ===== end rsvp ===== //
+
+		// ===== WEDDING GIFT ===== //
+		const giftButton = document.getElementById('gift-button'),
+				giftRekening = document.getElementById('gift-rekening');
+
+		giftButton.addEventListener('click', ()=>{
+			giftRekening.classList.add('show-rekening');
+			giftButton.style.marginBottom = "3rem";
+		});
+
+		const bca = document.getElementById('bca'),
+				mandiri = document.getElementById('mandiri');
+		const copyBca = document.querySelector('.copy__bca'),
+				copyMandiri = document.querySelector('.copy__mandiri');
+
+		copyBca.addEventListener('click', ()=>{
+			document.execCommand("copy");
+		});
+		copyMandiri.addEventListener('click', ()=>{
+			document.execCommand("copy");
+		});
+
+		copyBca.addEventListener("copy", function(event){
+			event.preventDefault();
+			if(event.clipboardData){
+				event.clipboardData.setData("text", bca.textContent);
+				alert("Copied!")
+			}else{
+				alert("Not copied!")
+			}
+		});
+		copyMandiri.addEventListener("copy", function(event){
+			event.preventDefault();
+			if(event.clipboardData){
+				event.clipboardData.setData("text", mandiri.textContent);
+				alert('Copied!')
+			}else{
+				alert("Not Copied!")
+			}
+		});
+		// ===== end wedding gift ===== //
+
+		// ===== GROOMSMEN & BRIDESMAID ===== //
+		const maidsList = document.querySelectorAll('.maids__list li');
+
+		function activeList(){
+			maidsList.forEach(n => n.classList.remove('active-maids'))
+			this.classList.add('active-maids')
+		}
+
+		maidsList.forEach(n => n.addEventListener('click', activeList));
+
+		// Filter
+		const maidsBox = document.querySelectorAll('.maids__box');
+
+		let value = 'groomsmen';
+		filter(value);
+
+		function filter(value){
+			maidsBox.forEach(show =>{
+				show.style.display = 'none';
+				if(show.getAttribute('data-id') === value || value === 'all'){
+					show.style.display = 'block';
+				}
+			})
+		}
+
+		maidsList.forEach(item =>{
+			item.addEventListener('click', ()=>{
+				let value = item.textContent;
+				filter(value);
+			})
+		})
+		// ===== end groomsmen & bridesmaid ===== //
+
+		// ===== BACKSOUND ===== //
+		const backsound = document.getElementById('song');
+		const backsoundIcon = document.getElementById('backsound-icon');
+		const popupBtn = document.getElementById('popup-btn');
+
+		popupBtn.addEventListener('click', ()=>{
+			backsound.play();
+			backsoundIcon.src = "assets/img/pause.png";
+		})
+
+		backsoundIcon.onclick = ()=>{
+			if(backsound.paused){
+				backsound.play();
+				backsoundIcon.src = "assets/img/pause.png";
+			}else{
+				backsound.pause();
+				backsoundIcon.src = "assets/img/play.png";
+			}
+		}
+		// ===== end backsound ===== //
+
+		/* ===== POPUP ===== */
+		const popup = document.getElementById('popup');
+		// const popupBtn = document.getElementById('popup-btn');
+
+		popupBtn.addEventListener('click', ()=>{
+			document.body.style.overflow = 'auto';
+			popup.style.display = 'none';
+		});
+		// ===== end popup ===== //
+
+		/* ===== PASSWORD WEBSITE ===== */
+		const passwordBtn = document.querySelector('.password__button');
+		const password = document.getElementById('password');
+		const passwordForm = document.querySelector('.password__form');
+
+		passwordBtn.addEventListener('click', ()=>{
+			const passwordInput = document.getElementById('password-input').value;
+
+			if(passwordInput == 123456){
+				password.style.display = 'none';
+			}else{
+				// Resert Form
+				passwordForm.reset();
+				alert('Your password wrong!');
+			}
+		});
+		// ===== end password website ===== //
+
+		// ===== AOS ANIMATE ===== //
+		// 1. popup -> .popup__container
+
+		// 2. home -> .home__content
+
+		// 4. class css -> .section__title
+		const sectionTitle = document.querySelectorAll('.section__title');
+		sectionTitle.forEach((n, i) => {
+			n.dataset.aos = 'fade-down';
+		});
+
+		// 5. class css -> .section__subtitle
+		const sectionSubtitle = document.querySelectorAll('.section__subtitle');
+		sectionSubtitle.forEach((n, i) => {
+			n.dataset.aos = 'fade-down';
+			n.dataset.aosDelay = i * 100;
+		});
+
+		// 6. love story -> .story__box
+
+		// 7. couple -> .groom__data, .bride__data
+
+		// 8. event -> .events__box
+
+		// 9. countdown timer -> .timer__box
+		const timerBox = document.querySelectorAll('.timer__box');
+		timerBox.forEach((n, i) => {
+			n.dataset.aos = 'flip-left';
+			n.dataset.aosDelay = i * 100;
+		});
+
+		// 10. gallery -> .gallery__box
+		const galleryBox = document.querySelectorAll('.gallery__box');
+		galleryBox.forEach((img, i) => {
+			img.dataset.aos = 'zoom-in-down';
+			img.dataset.aosDelay = i * 100;
+		});
+
+		// 11. video -> .video__container
+
+		// 12. rsvp -> .rsvp__container
+
+		// 13. gift -> .gift__container
+
+		// 14. live streaming -> .streaming__container
+
+		// 15. groomsmen & bridesmaid -> .maids__nav, .maids__container
+
+		// 16. prokes 
+		const prokesBox = document.querySelectorAll('.prokes__box');
+		prokesBox.forEach((n, i) => {
+			n.dataset.aos = 'flip-left';
+			n.dataset.aosDelay = i * 100;
+		});
+
+		// 17. footer -> .quotes, .footer__box
+
+		AOS.init({
+			duration: 1500,
+			once: true,  
+		});
+		// ===== end aos animate ===== //
+	</script>
+	<!-- ===== end main javascript ===== -->
+</body>
+</html>
